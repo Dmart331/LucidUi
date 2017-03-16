@@ -4,7 +4,7 @@
       Member Area
     </ion-title>
     <ion-buttons end>
-      <button ion-button (click)="logout()">
+      <button ion-button (click)="logOut()">
         <ion-icon name="log-out"></ion-icon>
       </button>
     </ion-buttons>
@@ -12,9 +12,20 @@
 </ion-header>
  
 <ion-content class="home" padding>
-<button ion-button (click)="getProducts()"></button>
-  <h3 >Welcome inside, {{username}}!</h3>
-<ul >
-  <li *ngFor="let product of products">{{product.title}}</li>
-  </ul>
+  <h3 >Your Dreams!</h3>
+<ion-list>
+ 
+  <ion-item-sliding *ngFor="let dream of dreams">
+ 
+    <ion-item (click)="logit(dream.id)">
+    {{dream.title}}
+    </ion-item>
+ 
+    <ion-item-options>
+      <button ion-button color="danger" (click)="removeItem(item)"> <ion-icon name='trash' is-active="false"></ion-icon> Delete</button>
+    </ion-item-options>
+  </ion-item-sliding>
+ 
+  </ion-list>
+<button ion-button (click)="addDream()">Add New Dream</button>
 </ion-content>

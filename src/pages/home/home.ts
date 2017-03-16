@@ -3,7 +3,10 @@ import {Http, Headers, Response} from '@angular/http';
 import {NavController} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { ProductService} from '../../providers/product-service';
+import { DreamPage} from '../dream-page/dream-page';
 import { provideAuth } from 'angular2-jwt';
+import { LoginPage } from '../login/login';
+import { DreamDetailPage} from '../dream-detail/dream-detail';
 import 'rxjs/add/operator/map';
  
 @Component({
@@ -21,34 +24,66 @@ import 'rxjs/add/operator/map';
       ]
 })
 export class HomePage {
-	public products;
-  username = '';
-  email = '';
+  ngOnInit(){
+    //do any lines of code to init the child
+    console.log("this executes second");
+    //then finally,
+    this.listDreams();        
+  }
   constructor(private nav: NavController, public auth: AuthService, public productService: ProductService, private http:Http) {
     // let info = this.auth.getinfo();
     // console.log("info", info)
     // let stuff = this.listProducts();
     // console.log(stuff);
   }
+  public dreams;
+  public dreamID;
+  public dreamData;
 
-  // public listProducts() {
-  //   return this.getProducts()
-  // }
+  public listDreams() {
+    return this.getDreams()
+  }
 
-public getProducts() {
+public getDreams() {
   return new Promise(resolve => {
-    var headers = new Headers();
-    this.auth.loadUserCredentials();
+   var headers = new Headers();
+   this.auth.loadUserCredentials();
     // console.log("loading", auth.AuthToken)
-    headers.append('Authorization', 'Token ' +this.auth.AuthToken);
-   this.http.get('http://localhost:8000/dreams/', {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{this.products = data, console.log(this.products)}
-)
-   
-})
+   headers.append('Authorization', 'Token ' +this.auth.AuthToken);
+   this.http.get('http://localhost:8000/dreams/', {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{this.dreams = data, console.log("proooood",this.dreams)
+     })  
+  })
 }
 
+ public addDream(){
+   this.nav.push(DreamPage)
+ }
 
 
+public removeItem(item){
+   console.log("doing it!")
+    for(let i = 0; i < this.dreams.length; i++) {
+ 
+      if(this.dreams[i] == item){
+        this.dreams.pop(i);
+      }
+ 
+    }
+  }
 
+public logOut(){
+  this.auth.logout();
+  this.nav.setRoot(LoginPage);
+}
+
+  public logit(id){
+  this.auth.storeId(id);
+  this.dreamID = this.auth.getDetail(id)
+  this.nav.push(DreamDetailPage)
+  }
+
+  public getId(){
+    return this.dreamID
+  }
 
 }

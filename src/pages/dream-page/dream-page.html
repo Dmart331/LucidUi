@@ -1,0 +1,40 @@
+<!--
+  Generated template for the DreamPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>DreamPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Dream</ion-label>
+        <ion-input type="text" placeholder="Dream Title" [(ngModel)]="product.title" name="title"></ion-input>
+      </ion-item>
+ <ion-item>
+  <ion-label>Category</ion-label>
+  <ion-select [(ngModel)]="product.dream_type" name="category">
+    <ion-option value="Horror" selected="true">Horror</ion-option>
+    <ion-option value="Fantasy">Fantasy</ion-option>
+    <ion-option value="Simulation">Simulation</ion-option>
+  </ion-select>
+</ion-item>
+      <ion-item>
+        <ion-label>Dream Description</ion-label>
+        <ion-textarea [(ngModel)]="product.description" name="description"></ion-textarea>
+      </ion-item>      
+      <ion-item>
+        <ion-label>Rate</ion-label>
+        <ion-textarea [(ngModel)]="product.rate" name="rate"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>Add Dream</button>
+    </form>
+</ion-content>
