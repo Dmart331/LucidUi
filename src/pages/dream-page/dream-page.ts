@@ -3,6 +3,7 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {NavController} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { provideAuth } from 'angular2-jwt';
+import { HomePage } from '../home/home';
 import 'rxjs/add/operator/map';
 
 
@@ -22,7 +23,7 @@ import 'rxjs/add/operator/map';
 })
 export class DreamPage {
 
-  constructor(public navCtrl: NavController, private auth: AuthService,  private http:Http) {}
+  constructor(public nav: NavController, private auth: AuthService,  private http:Http) {}
 
     product = {
     dreamer: 'dmart',
@@ -62,7 +63,9 @@ export class DreamPage {
 });
 }
 
-  
+  public goHome(){
+  this.nav.push(HomePage)
+}
 
 	handleError(error) {
 		console.log(error);

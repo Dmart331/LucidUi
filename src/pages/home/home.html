@@ -17,7 +17,7 @@
  
   <ion-item-sliding *ngFor="let dream of dreams">
  
-    <ion-item (click)="logit(dream.id)">
+    <ion-item (click)="logit(dream.id)" (click)="goToDetails(dream)">
     {{dream.title}}
     </ion-item>
  

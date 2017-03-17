@@ -35,6 +35,6 @@
         <ion-label>Rate</ion-label>
         <ion-textarea [(ngModel)]="product.rate" name="rate"></ion-textarea>
       </ion-item>
-      <button ion-button type="submit" block>Add Dream</button>
+      <button (click)="goHome()" ion-button type="submit" block>Add Dream</button>
     </form>
 </ion-content>

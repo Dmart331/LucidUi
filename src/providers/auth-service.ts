@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Component} from '@angular/core';
-import {Http, Headers, Response} from '@angular/http';
-import {NavController} from 'ionic-angular';
-import { ProductService} from '../../providers/product-service';
+import { Injectable } from '@angular/core';
+import { Component } from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
+import { NavController } from 'ionic-angular';
+import { ProductService } from '../../providers/product-service';
 import { DreamPage} from '../dream-page/dream-page';
 import { provideAuth } from 'angular2-jwt';
 import { LoginPage } from '../pages/login/login';
@@ -15,6 +15,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
     public dreamID;
+    public dream;
     isLoggedin: boolean;
     AuthToken;
     
@@ -115,7 +116,7 @@ export class AuthService {
             headers.append('Authorization', 'Token ' +this.AuthToken);
             this.http.get(`http://localhost:8000/dreams/${id}/`, {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{dreamData = data, this.storeDream(dreamData)
             })
-            this.storeId(id);
+            
     })
 }
 
@@ -124,17 +125,20 @@ export class AuthService {
     }
 
     useDream(){
-      var dream = window.localStorage.getItem("frank")
-      console.log("using dream", JSON.parse(dream))
-      return dream
+      this.dream = window.localStorage.getItem("frank")
+      console.log("using dream", JSON.parse(this.dream))
+      return this.dream
     }
 
     clearDream(){
-        window.localStorage.clear();
+        window.localStorage.removeItem("frank");
+
     }
 
     storeId(id){
         window.localStorage.setItem('dreamId', id);
+        console.log("here? 140");
+        this.getDetail(id);
         console.log("dreamin", window.localStorage.getItem('dreamId'))
     }
 

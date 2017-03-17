@@ -24,11 +24,12 @@ import 'rxjs/add/operator/map';
       ]
 })
 export class HomePage {
-  ngOnInit(){
+  ionViewWillEnter(){
     //do any lines of code to init the child
     console.log("this executes second");
     //then finally,
-    this.listDreams();        
+    this.listDreams();  
+
   }
   constructor(private nav: NavController, public auth: AuthService, public productService: ProductService, private http:Http) {
     // let info = this.auth.getinfo();
@@ -56,8 +57,9 @@ public getDreams() {
 }
 
  public addDream(){
-   this.nav.push(DreamPage)
+   this.nav.push(DreamPage);
  }
+
 
 
 public removeItem(item){
@@ -71,6 +73,10 @@ public removeItem(item){
     }
   }
 
+ public clearDream(){
+// this.auth.clearDream()
+}
+
 public logOut(){
   this.auth.logout();
   this.nav.setRoot(LoginPage);
@@ -78,8 +84,11 @@ public logOut(){
 
   public logit(id){
   this.auth.storeId(id);
-  this.dreamID = this.auth.getDetail(id)
-  this.nav.push(DreamDetailPage)
+   console.log("lkjasdflkjasfd");
+  }
+
+  public goToDetails(dream){
+    this.nav.push(DreamDetailPage, dream)
   }
 
   public getId(){
