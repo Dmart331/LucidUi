@@ -12,8 +12,8 @@
 </ion-header>
  
 <ion-content class="home" padding>
-  <h3 >{{dream.title}}</h3>
+  <h3 class="title">{{dream.title}}</h3>
 
-  <p>{{dream.description}}</p>
-<button (click)="goHome()">Go Home</button>
+  <ion-item class="description">{{dream.description}}</ion-item>
+<button ion-button color="danger"(click)="goHome()"><ion-icon name='home' is-active="false"></ion-icon>Go Home</button>
 </ion-content>

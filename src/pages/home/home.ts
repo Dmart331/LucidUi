@@ -51,7 +51,7 @@ public getDreams() {
    this.auth.loadUserCredentials();
     // console.log("loading", auth.AuthToken)
    headers.append('Authorization', 'Token ' +this.auth.AuthToken);
-   this.http.get('http://localhost:8000/dreams/', {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{this.dreams = data, console.log("proooood",this.dreams)
+   this.http.get('http://stark-castle-79494.herokuapp.com/dreams/', {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{this.dreams = data, console.log("proooood",this.dreams)
      })  
   })
 }
@@ -60,17 +60,16 @@ public getDreams() {
    this.nav.push(DreamPage);
  }
 
-
-
-public removeItem(item){
+public removeItem(dream){
    console.log("doing it!")
-    for(let i = 0; i < this.dreams.length; i++) {
- 
-      if(this.dreams[i] == item){
-        this.dreams.pop(i);
-      }
- 
-    }
+  return new Promise(resolve => {
+   var headers = new Headers();
+   this.auth.loadUserCredentials();
+    // console.log("loading", auth.AuthToken)
+   headers.append('Authorization', 'Token ' +this.auth.AuthToken);
+   this.http.delete(`http://stark-castle-79494.herokuapp.com/dreams/${dream}`, {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{this.dreams = data, console.log("proooood",this.dreams)
+     })  
+  })
   }
 
  public clearDream(){

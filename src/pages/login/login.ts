@@ -32,7 +32,7 @@ usercreds = {
   
   login(usercreds) {
           console.log(usercreds);
-        this.authservice.authenticate(usercreds).then(() => this.navCtrl.setRoot(HomePage));
+        this.authservice.authenticate(usercreds).then(() => this.navCtrl.setRoot(HomePage, usercreds));
             
 }
      signup() {

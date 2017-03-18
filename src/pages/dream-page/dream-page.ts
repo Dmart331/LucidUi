@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
-import {NavController} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { provideAuth } from 'angular2-jwt';
 import { HomePage } from '../home/home';
@@ -10,22 +10,15 @@ import 'rxjs/add/operator/map';
 @Component({
   selector: 'page-dream-page',
   templateUrl: 'dream-page.html',
-	providers: [AuthService
-	    // provideAuth({
-	    //     headerName: 'Authorization',
-	    //     headerPrefix: 'bearer',
-	    //     tokenName: 'token',
-	    //     tokenGetter: (() => localStorage.getItem('raja')),
-	    //     globalHeaders: [{ 'Content-Type': 'application/json' }],
-	    //     noJwtError: true
-	    // })]
-	  ],
+	providers: [AuthService],
 })
 export class DreamPage {
 
-  constructor(public nav: NavController, private auth: AuthService,  private http:Http) {}
+  constructor(public nav: NavController, navParams: NavParams, private auth: AuthService,  private http:Http) {
+  	// dinky = navParams.data.username;
+  }
 
-    product = {
+    dream = {
     dreamer: 'dmart',
     title: '',
     dream_type:'',
@@ -40,31 +33,31 @@ export class DreamPage {
     headers.append('Authorization', 'Token ' +this.auth.AuthToken);
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: headers})
-    let postParams = this.product;
+    let postParams = this.dream;
     
-	if(this.product.dream_type === "Horror"){
-		this.product.dream_type = "http://localhost:8000/dreamtypes/1/"
+	if(this.dream.dream_type === "Horror"){
+		this.dream.dream_type = "http://stark-castle-79494.herokuapp.com/dreamtypes/1/"
 	}
-	else if (this.product.dream_type === "Fantasy"){
-		this.product.dream_type = "http://localhost:8000/dreamtypes/2/"
+	else if (this.dream.dream_type === "Fantasy"){
+		this.dream.dream_type = "http://stark-castle-79494.herokuapp.com/dreamtypes/2/"
 	}
-	else if (this.product.dream_type === "Simulation"){
-		this.product.dream_type = "http://localhost:8000/dreamtypes/3/"
-	}
-
-	if(this.product.dreamer === "dmart"){
-		this.product.dreamer = "http://localhost:8000/dreamers/1/"
+	else if (this.dream.dream_type === "Simulation"){
+		this.dream.dream_type = "http://stark-castle-79494.herokuapp.com/dreamtypes/3/"
 	}
 
-	console.log('drew', this.product),
-    this.http.post('http://localhost:8000/dreams/', postParams, options).subscribe(data => { console.log(data['_body']);
+	if(this.dream.dreamer === "dmart"){
+		this.dream.dreamer = "http://stark-castle-79494.herokuapp.com/dreamers/1/"
+	}
+
+	console.log('drew', this.dream),
+    this.http.post('http://stark-castle-79494.herokuapp.com/dreams/', postParams, options).subscribe(data => { console.log(data['_body']);
 }, error => {
 	console.log(error);
 });
 }
 
   public goHome(){
-  this.nav.push(HomePage)
+  this.nav.pop(DreamPage)
 }
 
 	handleError(error) {

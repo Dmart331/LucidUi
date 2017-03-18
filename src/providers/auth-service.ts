@@ -61,7 +61,7 @@ export class AuthService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         
         return new Promise(resolve => {
-            this.http.post('http://localhost:8000/api-token-auth/', creds, {headers: headers}).subscribe(data => {
+            this.http.post('http://stark-castle-79494.herokuapp.com/api-token-auth/', creds, {headers: headers}).subscribe(data => {
                 if(data){
                     console.log("log", data.json().token)
                     this.storeUserCredentials(data.json().token);
@@ -79,7 +79,7 @@ export class AuthService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         
         return new Promise(resolve => {
-            this.http.post('http://localhost:8000/users/', creds, {headers: headers}).subscribe(data => {
+            this.http.post('http://stark-castle-79494.herokuapp.com/users/', creds, {headers: headers}).subscribe(data => {
                 if(data.json().success){
                     resolve(true);
                 }
@@ -96,7 +96,7 @@ export class AuthService {
             this.loadUserCredentials();
             console.log("loading", this.AuthToken)
             headers.append('Authorization', 'Token ' +this.AuthToken);
-            this.http.get('http://localhost:8000/dreams/', {headers: headers}).subscribe(data => {
+            this.http.get('http://stark-castle-79494.herokuapp.com/dreams/', {headers: headers}).subscribe(data => {
                 if(data)
 
                     resolve(data.json());
@@ -114,7 +114,7 @@ export class AuthService {
             var headers = new Headers();
             this.loadUserCredentials();
             headers.append('Authorization', 'Token ' +this.AuthToken);
-            this.http.get(`http://localhost:8000/dreams/${id}/`, {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{dreamData = data, this.storeDream(dreamData)
+            this.http.get(`http://stark-castle-79494.herokuapp.com/dreams/${id}/`, {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{dreamData = data, this.storeDream(dreamData)
             })
             
     })
