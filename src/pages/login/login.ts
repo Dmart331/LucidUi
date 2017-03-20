@@ -24,6 +24,9 @@ import 'rxjs/add/operator/map';
 })
 export class LoginPage {
   public dreams;
+
+ //User creds stores the name and password infor and sends it with login function
+
 usercreds = {
      name: '',
      password: ''
@@ -32,10 +35,14 @@ usercreds = {
   constructor(public authservice: AuthService, public navCtrl: NavController, public Register: RegisterPage) {  
   }
   
+  //Uses the auth service login function.
+
   login(usercreds) {
     this.authservice.login(usercreds);
     this.navCtrl.push(HomePage)
 }
+  //pushes the sign up page to top layer.
+  
      signup() {
         this.navCtrl.push(RegisterPage);
     }
