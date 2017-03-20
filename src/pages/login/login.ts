@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { RegisterPage} from '../register/register'
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { provideAuth } from 'angular2-jwt';
 import {AuthService} from '../../providers/auth-service';
 import {HomePage} from '../home/home';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'page-login',
@@ -21,7 +23,7 @@ import {HomePage} from '../home/home';
   
 })
 export class LoginPage {
- 
+  public dreams;
 usercreds = {
      name: '',
      password: ''
@@ -31,9 +33,8 @@ usercreds = {
   }
   
   login(usercreds) {
-          console.log(usercreds);
-        this.authservice.authenticate(usercreds).then(() => this.navCtrl.setRoot(HomePage, usercreds));
-            
+    this.authservice.login(usercreds);
+    this.navCtrl.push(HomePage)
 }
      signup() {
         this.navCtrl.push(RegisterPage);

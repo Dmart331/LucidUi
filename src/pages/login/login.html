@@ -1,5 +1,5 @@
-<ion-list>
-      <ion-item>
+<!-- <ion-list>
+      <ion-item class="login-content">
           <ion-label floating>Username</ion-label>
           <ion-input [(ngModel)] = "usercreds.name" type="text"></ion-input>
       </ion-item>
@@ -10,3 +10,43 @@
   </ion-list>
   <button ion-button (click)="login(usercreds)">Login</button>
   <button ion-button (click)="signup()">Signup</button>
+ -->
+
+  <ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <img src="https://placeimg.com/300/200/any"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div class="login-box">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            
+            <ion-item>
+              <ion-input [(ngModel)] = "usercreds.name" type="text" placeholder="Username"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input [(ngModel)] = "usercreds.password" type="password" placeholder="Password"></ion-input>
+            </ion-item>
+            
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+            <button ion-button class="submit-btn" full type="submit" (click)="login(usercreds)">Login</button>
+
+         <!--  <button ion-button class="register-btn" block clear (click)="signup()">Create New Account</button> -->
+            <button ion-button class="register-btn" block clear (click)="signup()">Signup</button>
+
+        </ion-col>
+      </ion-row>
+      
+  </div>
+</ion-content>
+

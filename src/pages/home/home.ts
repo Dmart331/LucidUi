@@ -32,10 +32,7 @@ export class HomePage {
 
   }
   constructor(private nav: NavController, public auth: AuthService, public productService: ProductService, private http:Http) {
-    // let info = this.auth.getinfo();
-    // console.log("info", info)
-    // let stuff = this.listProducts();
-    // console.log(stuff);
+      
   }
   public dreams;
   public dreamID;
@@ -67,8 +64,7 @@ public removeItem(dream){
    this.auth.loadUserCredentials();
     // console.log("loading", auth.AuthToken)
    headers.append('Authorization', 'Token ' +this.auth.AuthToken);
-   this.http.delete(`http://stark-castle-79494.herokuapp.com/dreams/${dream}`, {headers: headers}).map((res:Response) => res.json()).subscribe(data =>{this.dreams = data, console.log("proooood",this.dreams)
-     })  
+   this.http.delete(`http://stark-castle-79494.herokuapp.com/dreams/${dream}`, {headers: headers}).map((res:Response) => res.json())
   })
   }
 

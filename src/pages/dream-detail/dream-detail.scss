@@ -4,14 +4,12 @@ page-dream-detail {
 	background-color:  map-get($colors, light);
 }
 
-ion-item{
-	background-color:  map-get($colors, secondary);
-}
+
 .title{
 	color: map-get($colors, primary);
 }
 
 .description{
-	color: map-get($colors, light);
+	color: map-get($colors, primary);
 }
 }
