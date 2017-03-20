@@ -24,13 +24,14 @@ import 'rxjs/add/operator/map';
       ]
 })
 export class HomePage {
+  //Insure that page loads every time it is brought up. No caching.
+
   ionViewWillEnter(){
-    //do any lines of code to init the child
     console.log("this executes second");
-    //then finally,
     this.listDreams();  
 
   }
+  
   constructor(private nav: NavController, public auth: AuthService, public productService: ProductService, private http:Http) {
       
   }
