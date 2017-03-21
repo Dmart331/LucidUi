@@ -37,6 +37,8 @@ export class AuthService {
         this.authenticate(usercreds);
     }
 
+
+
    //Utilizing the Local Storage of Ionic to share data between files.
 
     storeUserCredentials(token) {

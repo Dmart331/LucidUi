@@ -38,10 +38,12 @@ export class HomePage {
   public dreams;
   public dreamID;
   public dreamData;
-
+  public searchTerm: string = '';
   public listDreams() {
     return this.getDreams()
   }
+
+
 
 public getDreams() {
   return new Promise(resolve => {
@@ -54,6 +56,19 @@ public getDreams() {
   })
 }
 
+    setFilteredItems() {
+ 
+        this.dreams = this.filterItems(this.searchTerm);
+ 
+    }
+    
+    filterItems(searchTerm){
+
+    return this.dreams.filter((dream) => {
+        return dream.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });     
+
+}
  public addDream(){
    this.nav.push(DreamPage);
  }

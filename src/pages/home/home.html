@@ -13,6 +13,8 @@
  
 <ion-content class="home" padding>
   <ion-row>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+
         <ion-col>
           <ion-list inset *ngFor="let dream of dreams">
             <!-- <ion-item-sliding *ngFor="let dream of dreams"> -->
