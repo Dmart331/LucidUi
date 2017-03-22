@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map';
 export class DreamPage {
 
   constructor(public nav: NavController, navParams: NavParams, private auth: AuthService,  private http:Http) {}
-
+  //object to be posted to API.
     dream = {
     dreamer: 'dmart',
     title: '',
@@ -25,7 +25,7 @@ export class DreamPage {
     rate:'',
   };
 
-
+  //Log the form from dream-page.html
   logForm(){
     let headers = new Headers();
     this.auth.loadUserCredentials();
@@ -33,7 +33,7 @@ export class DreamPage {
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: headers})
     let postParams = this.dream;
-    
+    //Hard coded. If time allows, do this correctly. 
 	if(this.dream.dream_type === "Horror"){
 		this.dream.dream_type = "http://stark-castle-79494.herokuapp.com/dreamtypes/1/"
 	}
@@ -47,23 +47,22 @@ export class DreamPage {
 	if(this.dream.dreamer === "dmart"){
 		this.dream.dreamer = "http://stark-castle-79494.herokuapp.com/dreamers/1/"
 	}
-
-	console.log('drew', this.dream),
     this.http.post('http://stark-castle-79494.herokuapp.com/dreams/', postParams, options).subscribe(data => { console.log(data['_body']);
 }, error => {
 	console.log(error);
 });
 }
 
+//Take away dreampage from dom.
   public goHome(){
   this.nav.pop(DreamPage)
 }
-
+//If server error
 	handleError(error) {
 		console.log(error);
 		return error.json().message || 'Server error, please try again later';
 	}
-
+//success
 	successCallback() {
 		console.log('Success!');
 		return console.log('Success!')
