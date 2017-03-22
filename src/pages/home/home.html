@@ -12,23 +12,20 @@
 </ion-header>
  
 <ion-content class="home" padding>
-  <ion-row>
-    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+     <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
 
-        <ion-col>
           <ion-list inset *ngFor="let dream of dreams">
             <!-- <ion-item-sliding *ngFor="let dream of dreams"> -->
 
               <ion-item (click)="logit(dream.id)" (click)="goToDetails(dream)">
               {{dream.title}}
               </ion-item>
+
               <ion-item-options>
       <button ion-button color="danger" (click)="removeItem(dream.id)"> <ion-icon name='trash' is-active="false"></ion-icon> Delete</button>
     </ion-item-options>
   <!-- </ion-item-sliding> -->
   </ion-list>
-  </ion-col>
-  </ion-row>
 
 <!-- <button ion-button (click)="addDream()">Add New Dream</button> -->
 

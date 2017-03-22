@@ -4,6 +4,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { provideAuth } from 'angular2-jwt';
 import { HomePage } from '../home/home';
+import {Ionic2RatingModule } from 'ionic2-rating';
 import 'rxjs/add/operator/map';
 
 
@@ -14,9 +15,7 @@ import 'rxjs/add/operator/map';
 })
 export class DreamPage {
 
-  constructor(public nav: NavController, navParams: NavParams, private auth: AuthService,  private http:Http) {
-  	// dinky = navParams.data.username;
-  }
+  constructor(public nav: NavController, navParams: NavParams, private auth: AuthService,  private http:Http) {}
 
     dream = {
     dreamer: 'dmart',

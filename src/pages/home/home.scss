@@ -8,21 +8,24 @@ page-home {
 		}
 
 		ion-item {
-		 border-radius: 15px !important;
+		 border-radius: 10px !important;
 		 padding-left: 30px !important;
 		 text-align: center!important;
 		 background-color: map-get($colors, primary);
-		 font-size: 0.9em;
-		 margin-bottom: 10px;
+		 font-size: 1.2em;
 		 border: 1px solid map-get($colors, primary);
 		 border-bottom: 0px !important;
 		 box-shadow: none !important;
-		 color: map-get($colors, dark)
+		 color: map-get($colors, dark);
+		}
+
+		ion-item:active{
+			background-color:map-get($colors, danger);
 		}
 
 		.item-inner{
 			border-bottom-color:map-get($colors, primary) !important;
-			box-shadow: none !important;
+			box-shadow:  10px 10px 5px map-get($colors, dark) !important;
 		}
 
 		.submit-btn{
@@ -35,5 +38,11 @@ page-home {
 			margin: 0px 16px 0px 16px;
 			padding-bottom: 20px;
 		}
+
+		 .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
   }
 }

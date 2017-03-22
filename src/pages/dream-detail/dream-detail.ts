@@ -8,16 +8,7 @@ import 'rxjs/add/operator/map';
 @Component({
   selector: 'page-dream-detail',
   templateUrl: 'dream-detail.html',
-      providers: [[AuthService,
-        provideAuth({
-            headerName: 'Authorization',
-            headerPrefix: 'bearer',
-            tokenName: 'token',
-            tokenGetter: (() => localStorage.getItem('raja')),
-            globalHeaders: [{ 'Content-Type': 'application/json' }],
-            noJwtError: true
-        })]
-      ]
+      providers: [AuthService]
 })
 
 export class DreamDetailPage {
@@ -27,12 +18,7 @@ export class DreamDetailPage {
   	this.dream = navParams.data;
   }
 
-
-public goHome(){
-  this.nav.push(HomePage);
-}
-
-
-  
-
+  public goHome(){
+    this.nav.push(HomePage);
+  }
 }

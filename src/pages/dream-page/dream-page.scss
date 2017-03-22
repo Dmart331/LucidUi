@@ -1,9 +1,9 @@
 page-dream-page {
 .login-content {
-    background: #56CA96;
+    background: map-get($colors, primary);
  
     .login-box {
-      background: #509287;
+      background: map-get($colors, secondary);
       padding: 20px 20px 0px 20px;
       margin-top: 30px;
     }
@@ -16,12 +16,21 @@ page-dream-page {
      ion-item {
          border-radius: 30px !important;
          padding-left: 30px !important;
-         font-size: 0.9em;
+         font-size: 1.2em;
          margin-bottom: 10px;
          border: 1px solid #ffffff;
          border-bottom: 0px !important;
          box-shadow: none !important;
      }
+
+     ion-item .select{
+        margin-left: -10px;
+        min-width: 100% !important;
+    }
+
+    .description{
+      // margin-top: 5px;
+    }
  
      .signup-col {
        margin: 0px 16px 0px 16px;
@@ -34,9 +43,10 @@ page-dream-page {
      }
  
      .submit-btn {
-       background: #51CFB1;
+       background: map-get($colors, secondary);
        border-radius: 30px !important;
        border: 1px solid #ffffff;
+       margin-bottom: 15px;
      }
   }
 

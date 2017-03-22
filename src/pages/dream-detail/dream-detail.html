@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>
-      Your Dream
+    {{dream.title}}
     </ion-title>
     <ion-buttons end>
       <button ion-button (click)="logOut()">
@@ -12,8 +12,6 @@
 </ion-header>
  
 <ion-content class="home" padding>
-  <h3 class="title">{{dream.title}}</h3>
-
-  <ion-item class="description">{{dream.description}}</ion-item>
-<button ion-button color="danger"(click)="goHome()"><ion-icon name='home' is-active="false"></ion-icon>Go Home</button>
+  <h2 class="description">{{dream.description}}</h2>
+<button ion-button class="home-btn" (click)="goHome()" full><ion-icon name='home' is-active="false"></ion-icon>Go Home</button>
 </ion-content>

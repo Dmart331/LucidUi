@@ -9,28 +9,27 @@
             <ion-row>
                 <ion-col>
                     <ion-list inset>
-                    <ion-item>
+                        <ion-item>
                             <ion-input placeholder="Title" [(ngModel)]="dream.title" name="Title"></ion-input>
                         </ion-item>
-
+                        <ion-item class="description">
+                            <ion-input placeholder="Description" [(ngModel)]="dream.description" name="description"></ion-input>
+                        </ion-item>
                         <ion-item>
-                            <ion-select placeholder="Category" [(ngModel)]="dream.dream_type" name="category">
+                            <ion-input placeholder="Rate" [(ngModel)]="dream.rate" name="rate"></ion-input>
+                        </ion-item>
+                        <ion-item class="select">
+                            <ion-select class="select" placeholder="Category" [(ngModel)]="dream.dream_type" name="category">
                                 <ion-option value="Horror" selected="true">Horror</ion-option>
                                 <ion-option value="Fantasy">Fantasy</ion-option>
                                 <ion-option value="Simulation">Simulation</ion-option>
                             </ion-select>
                         </ion-item>
-                        <ion-item>
-                            <ion-textarea placeholder="Description" [(ngModel)]="dream.description" name="description"></ion-textarea>
-                        </ion-item>
-                        <ion-item>
-                            <ion-input placeholder="Rate" [(ngModel)]="dream.rate" name="rate"></ion-input>
-                        </ion-item>
                     </ion-list>
                 </ion-col>
             </ion-row>
             <ion-row>
-                    <button ion-button class="submit-btn" full type="submit" (click)="goHome()" ion-button type="submit" block>Add Dream</button>
+                <button ion-button class="submit-btn" full type="submit" (click)="goHome()" ion-button type="submit" block>Add Dream</button>
             </ion-row>
         </form>
     </div>
