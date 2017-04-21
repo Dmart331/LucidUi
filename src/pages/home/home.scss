@@ -44,5 +44,9 @@ page-home {
         text-align: center;
         padding: 10px;
     }
+    	.wrap{
+    		max-height: 575px;
+    		overflow: scroll;
+    	}
   }
 }

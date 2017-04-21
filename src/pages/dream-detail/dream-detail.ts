@@ -12,12 +12,14 @@ import 'rxjs/add/operator/map';
 })
 
 export class DreamDetailPage {
+
+  //dream object
   public dream;
 
   constructor(public nav: NavController, navParams: NavParams, public auth: AuthService) {
   	this.dream = navParams.data;
   }
-
+  //Go back to home page. Reload all objects.
   public goHome(){
     this.nav.push(HomePage);
   }

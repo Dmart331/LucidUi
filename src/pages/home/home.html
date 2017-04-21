@@ -13,7 +13,7 @@
  
 <ion-content class="home" padding>
      <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
-
+     <div class="wrap">
           <ion-list inset *ngFor="let dream of dreams">
             <!-- <ion-item-sliding *ngFor="let dream of dreams"> -->
 
@@ -26,6 +26,7 @@
     </ion-item-options>
   <!-- </ion-item-sliding> -->
   </ion-list>
+  </div>
 
 <!-- <button ion-button (click)="addDream()">Add New Dream</button> -->
 
